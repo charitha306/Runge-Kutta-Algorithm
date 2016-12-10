@@ -1,0 +1,60 @@
+/**
+ * Document: MaxCompiler tutorial (maxcompiler-tutorial.pdf)
+ * Chapter: 4      Example: 2      Name: Simple
+ * MaxFile name: Simple
+ * Summary:
+ * 	 Takes a stream and for each value x calculates x^2 + x.
+ */
+package simple;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+class RK4 extends Kernel {
+    
+	RK4(KernelParameters parameters) {
+		super(parameters);
+
+        DFEVar xh,h6,hh;
+        DFEVar dym,dyt,yt;
+
+		// Input
+		DFEVar h = io.scalarInput("h", dfeFloat(8, 24));
+        DFEVar x = io.scalarInput("x", dfeFloat(8, 24));
+        DFEVar dydx = io.input("dydx", dfeFloat(8, 24));
+		DFEVar y = io.input("y", dfeFloat(8, 24));
+        DFEVar FLOAT_TWO = constant.var(dfeFloat(8, 24), 2.0);
+        DFEVar FLOAT_ONE = constant.var(dfeFloat(8, 24), 1.0);
+        DFEVar FLOAT_ONE_HALF = constant.var(dfeFloat(8, 24), 0.5);
+        DFEVar FLOAT_SIX = constant.var(dfeFloat(8, 24), 6.0);
+
+
+        hh = h*FLOAT_ONE_HALF;
+        h6 = h/FLOAT_SIX;
+        xh = x + hh;
+        
+        /** step 1 **/
+        yt = y + hh*dydx;
+        //derivs(xh, yt, dyt); 	//dy/dx = 1 + y^2
+        dyt = FLOAT_ONE + yt*yt;
+
+        /** step 2 **/
+        yt = y + hh*dyt;
+        //derivs(xh, yt, dym); //dy/dx = 1 + y^2
+        dym = FLOAT_ONE + yt*yt;
+
+        /** step 3 **/
+        yt  = y + h*dym;
+        dym = dym + dyt; 
+        // derivs(x + h, yt, dyt); //dy/dx = 1 + y^2
+        dyt = FLOAT_ONE + yt*yt;
+
+        DFEVar result = y + h6*(dydx + dyt + FLOAT_TWO*dym);
+
+		// Output
+		io.output("yout", result, dfeFloat(8, 24));
+	}
+
+}
+

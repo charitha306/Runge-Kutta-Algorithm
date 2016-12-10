@@ -1,0 +1,49 @@
+*** After kernel graph-pass 'Init Graph' ***
+node "+" (ID 14) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:876)
+	simple.RK4.<init>(SimpleKernel.maxj:35)
+	simple.SimpleManager.main(SimpleManager.maxj:20)
+	
+*** After kernel graph-pass 'Init Graph' ***
+node "Scalar input (x)" (ID 1) has unconnected outputs: [x]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:1106)
+	simple.RK4.<init>(SimpleKernel.maxj:24)
+	simple.SimpleManager.main(SimpleManager.maxj:20)
+	
+*** After kernel graph-pass 'OptimiseNodesPass' ***
+node "Scalar input (x)" (ID 1) has unconnected outputs: [x]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:1106)
+	simple.RK4.<init>(SimpleKernel.maxj:24)
+	simple.SimpleManager.main(SimpleManager.maxj:20)
+	
+*** After kernel graph-pass 'PO2FPMultOptimiser' ***
+node "Scalar input (x)" (ID 1) has unconnected outputs: [x]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:1106)
+	simple.RK4.<init>(SimpleKernel.maxj:24)
+	simple.SimpleManager.main(SimpleManager.maxj:20)
+	
+*** After kernel graph-pass 'ScheduleApplier' ***
+node "Scalar input (x)" (ID 1) has unconnected outputs: [x]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:1106)
+	simple.RK4.<init>(SimpleKernel.maxj:24)
+	simple.SimpleManager.main(SimpleManager.maxj:20)
+	
+*** After kernel graph-pass 'TapFIFOsPass' ***
+node "Scalar input (x)" (ID 1) has unconnected outputs: [x]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:1106)
+	simple.RK4.<init>(SimpleKernel.maxj:24)
+	simple.SimpleManager.main(SimpleManager.maxj:20)
+	
+*** After kernel graph-pass 'RemoveUntypedConstants' ***
+node "Scalar input (x)" (ID 1) has unconnected outputs: [x]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:1106)
+	simple.RK4.<init>(SimpleKernel.maxj:24)
+	simple.SimpleManager.main(SimpleManager.maxj:20)
+	
